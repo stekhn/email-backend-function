@@ -1,0 +1,18 @@
+{
+  "name": "email-backend-function",
+  "version": "1.0.0",
+  "description": "Email backend for forms that runs as a Google Cloud Function",
+  "main": "index.js",
+  "repository": "git@github.com:stekhn/email-backend-function.git",
+  "author": "Steffen Kühne",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "functions-framework --target=send"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.7"
+  }
+}
