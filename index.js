@@ -16,22 +16,25 @@ const mailer = nodemailer.createTransport({
 });
 
 functions.http("send", (req, res) => {
-  const email = {
-    sender: req.body.name,
-    from: req.body.email,
-    to: [EMAIL_USER],
-    subject: req.body.subject || "[No subject]",
-    html: req.body.message || "[No message]",
-  };
+  if (req.body && req.body.email) {
+    const email = {
+      sender: req.body.name,
+      from: req.body.email,
+      to: [EMAIL_USER],
+      subject: req.body.subject || "[No subject]",
+      html: req.body.message || "[No message]",
+    };
 
-  mailer.sendMail(email, function (error, info) {
-    if (error) {
-      console.error(error);
-      return res.status(500).send(error);
-    }
-    console.info(`Email from ${email.from} was sent to ${email.to}`);
-    res.json({ success: true });
-  });
+    mailer.sendMail(email, function (error) {
+      if (error) {
+        console.error(error);
+        return res.status(500).send(error);
+      }
 
-  res.send("OK");
+      console.info(`Email from ${email.from} was sent to ${email.to}`);
+      return res.send("OK");
+    });
+  }
+
+  return res.status(400).send("Request body is undefined");
 });
