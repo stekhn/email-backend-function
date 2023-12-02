@@ -1,0 +1,7 @@
+.gcloudignore
+.git
+.gitignore
+test/
+README.md
+#!include:.gitignore
+!.env
