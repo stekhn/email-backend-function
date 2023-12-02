@@ -1,0 +1,27 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email tester</title>
+  </head>
+  <body>
+    <h1>Send test email</h1>
+    <form method="post" action="http://localhost:8080/">
+      <label for="name"> Name </label><br />
+      <input type="text" name="name" id="name" />
+      <br />
+      <label for="email"> Email </label><br />
+      <input type="email" name="email" id="email" />
+      <br />
+      <label for="subject"> Subject </label><br />
+      <input type="text" name="subject" id="subject" />
+      <br />
+      <label for="message"> Message </label><br />
+      <textarea name="message" id="message" rows="5"></textarea>
+      <br />
+      <button type="submit">Send</button>
+      <br />
+      <input type="reset" value="Clear" />
+    </form>
+  </body>
+</html>
