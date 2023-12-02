@@ -25,16 +25,16 @@ functions.http("send", (req, res) => {
       html: req.body.message || "[No message]",
     };
 
-    mailer.sendMail(email, function (error) {
+    mailer.sendMail(email, (error) => {
       if (error) {
-        console.error(error);
-        return res.status(500).send(error);
+        res.status(500).send(error);
+      } else {
+        res.status(200).send("Email sent");
       }
-
-      console.info(`Email from ${email.from} was sent to ${email.to}`);
-      return res.send("OK");
     });
+  } else {
+    return res.status(400).send("Request body is undefined");
   }
 
-  return res.status(400).send("Request body is undefined");
+  res.end();
 });
