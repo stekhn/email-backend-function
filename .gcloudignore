@@ -1,6 +1,7 @@
 .gcloudignore
 .git
 .gitignore
+.env.template
 test/
 README.md
 #!include:.gitignore
