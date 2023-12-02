@@ -33,7 +33,7 @@ functions.http("send", (req, res) => {
       }
     });
   } else {
-    return res.status(400).send("Request body is undefined");
+    res.status(400).send("Request body is undefined");
   }
 
   res.end();
