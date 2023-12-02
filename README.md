@@ -7,7 +7,7 @@ Simple service that provides an email backend for contact forms and other applic
 This script is written in JavaScript and requires [Node.js](https://nodejs.org/en/).
 
 - Clone the repository: `git clone git@github.com:stekhn/email-backend-function.git`
-- Navigate to to to folder: `email-backend-function`
+- Navigate to to to folder: `cd email-backend-function`
 - Install dependencies: `npm install`
 - [Create a configuration file](#configuration-file)
 - [Deploy to Google Cloud Functions](#google-cloud-deployment)
