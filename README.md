@@ -20,7 +20,7 @@ Add a `.env` configuration by copying `.env.template`:
 cp .env.template .env
 ```
 
-Open the `.env` file and add your SMTP server settings and credentials.
+Open the `.env` file and add your SMTP server settings and credentials. Example:
 
 ```console
 EMAIL_SMTP_HOST=smtp.my-mail-provider.com
@@ -40,13 +40,13 @@ These instructions assume that you already have a Google Cloud account and set u
 Create a new Google Cloud project, if you don't have a project already:
 
 ```console
-gcloud projects create email-backend
+gcloud projects create my-project
 ```
 
 Set the new project as your current project:
 
 ```console
-gcloud config set project email-backend
+gcloud config set project my-project
 ```
 
 ### Deploy function
@@ -66,7 +66,12 @@ gcloud config set functions/region europe-west3
 Deploy the function as a Node.js application with an HTTP trigger:
 
 ```console
-gcloud functions deploy email-backend-function --region=europe-west3 --runtime=nodejs18 --entry-point=send --trigger-http
+gcloud functions deploy email-backend-function \
+  --region=europe-west3 \
+  --runtime=nodejs18 \
+  --entry-point=send \
+  --trigger-http \
+  --security-level=secure-always \
 ```
 
 Allow public HTTP requests to the function by answering `y` (yes)):
@@ -74,6 +79,8 @@ Allow public HTTP requests to the function by answering `y` (yes)):
 ```console
 Allow unauthenticated invocations of new function [githubGreenWave]? (y/N)?
 ```
+
+Setting up the functions may take a minute. Once the function is created successfully, you'll get an URL that can be used in your form or application. Example: <https://europe-west3-my-project.cloudfunctions.net/email-backend>
 
 ## Local testing
 
